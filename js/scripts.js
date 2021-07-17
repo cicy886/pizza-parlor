@@ -1,3 +1,11 @@
+//constructor function for pizza
+function Pizza (customerName,firstTopping,secondTopping,thirdTopping,fourthTopping){
+  this.customerName = customerName;
+  this.firstTopping = firstTopping;
+  this.secondTopping = secondTopping;
+  this.thirdTopping = thirdTopping;
+  this.fourthTopping = fourthTopping;
+}
 
 
 $(document).ready(function(){
