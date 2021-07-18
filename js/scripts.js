@@ -1,25 +1,88 @@
-//constructor function for pizza
-function Pizza (customerName,firstTopping,secondTopping,thirdTopping,fourthTopping){
+function PizzaOrders() {
+  this.pizzas = {};
+  this.currentId = 0;
+}
+
+PizzaOrders.prototype.addPizza = function(pizza) {
+  pizza.id = this.assignId();
+  this.pizzas[pizza.id] = pizza;
+};
+
+PizzaOrders.prototype.assignId = function() {
+  this.currentId += 1;
+  return this.currentId;
+};
+
+PizzaOrders.prototype.findPizza = function(id) {
+  if (this.pizzas[id] != undefined) {
+    return this.pizzas[id];
+  }
+  return false;
+};
+
+function Pizza (customerName,firstTopping,secondTopping,thirdTopping,fourthTopping,size){
   this.customerName = customerName;
   this.firstTopping = firstTopping;
   this.secondTopping = secondTopping;
   this.thirdTopping = thirdTopping;
   this.fourthTopping = fourthTopping;
+  this.size = size;
 }
 
+// function totalPayment(pizza){
+//   let sum=0;
+//   for (let i of Object.keys(pizza)){
+    
+//   }
+// }
 
-$(document).ready(function(){
-  $("form#new-pizza").submit(function(event){
-    event.preventDefalt();
-    const inpputedNewNames = $ ("input#newNames").val();
-    const inpputedFirstTopping = $("input#firstTopping").val();
-    const inpputedSecondTopping = $("input#secondTopping").val();
-    const inpputedThirdTopping = $("input#thirdTopping").val();
-    const inpputedFourthTopping = $("input#fourthTopping").val();
+let pizzaOrders = new PizzaOrders();
 
-    $("input#newNames").val("");
+function displayOrderDetails(pizzaOrdersToDisplay) {
+  let pizzasList = $("ul#pizzas");
+  let htmlForPizzaInfo = "";
+  Object.keys(pizzaOrdersToDisplay.pizzas).forEach(function(key) {
+    const pizza = pizzaOrdersToDisplay.findPizza(key);
+    htmlForPizzaInfo += "<li id=" + pizza.id + ">" + pizza.customerName + "'s order" + "</li>";
+  });
+  pizzasList.html(htmlForPizzaInfo);
+}
 
-    let newPizza = new Pizza (inpputedNewNames, inpputedFirstTopping, inpputedSecondTopping, inpputedThirdTopping, inpputedFourthTopping);
-    displayPizzaDetails(newPizza);
+function showPizza(pizzaId) {
+  const pizza = pizzaOrders.findPizza(pizzaId);
+  $("#show-result").show();
+  $(".newName").html(pizza.customerName);
+  $(".firstTopping").html(pizza.firstTopping);
+  $(".secondTopping").html(pizza.secondTopping);
+  $(".thirdTopping").html(pizza.thirdTopping);
+  $(".fourthTopping").html(pizza.fourthTopping);
+  $(".size").html(pizza.size);
+  $(".totalPayment").html(pizza.totalPayment)
+}
+
+function attachPizzaListeners() {
+  $("ul#pizzas").on("click", "li", function() {
+    showPizza(this.id);
+  });
+}
+
+$(document).ready(function() {
+  attachPizzaListeners();
+  $("form#new-pizza").submit(function(event) {
+    event.preventDefault();
+    const inputtedCustomerName = $("input#newName").val();
+    const inputtedFirstTopping = $("input:radio[name=firstTopping]:checked").val();
+    const inputtedSecondTopping = $("input:radio[name=secondTopping]:checked").val();
+    const inputtedThirdTopping = $("input:radio[name=thirdTopping]:checked").val();
+    const inputtedFourthTopping = $("input:radio[name=fourthTopping]:checked").val();
+    const inputtedSize = $("input:radio[name=size]:checked").val();
+
+    $("input#newName").val("");
+
+    let newPizza = new Pizza(inputtedCustomerName, inputtedFirstTopping, inputtedSecondTopping, inputtedThirdTopping, inputtedFourthTopping, inputtedSize);
+    // totalPayment(newPizza);
+    $("#totalPayment").html(newPizza);
+    pizzaOrders.addPizza(newPizza);
+    displayOrderDetails(pizzaOrders);
   });
 });
