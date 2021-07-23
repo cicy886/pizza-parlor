@@ -1,6 +1,7 @@
 function PizzaOrders() {
   this.pizzas = {};
   this.currentId = 0;
+  this.totalPayment = 0;
 }
 
 PizzaOrders.prototype.addPizza = function(pizza) {
@@ -29,14 +30,67 @@ function Pizza (customerName,firstTopping,secondTopping,thirdTopping,fourthToppi
   this.size = size;
 }
 
-// function totalPayment(pizza){
-//   let sum=0;
-//   for (let i of Object.keys(pizza)){
-    
-//   }
-// }
+Pizza.prototype.paymentCalculation = function(){
+  if (this.size == "medium"){
+    if (this.firstTopping=="pepperoni" || this.firstTopping=="cheese" || this.firstTopping=="artichoke" || this.firstTopping=="anchovy"){
+      if (this.secondTopping == "none"){
+        if (this.thirdTopping == "none"){
+          if (this.fourthTopping == "none"){
+            this.totalPayment = 10;
+          } else {
+            this.totalPayment = 12;
+          }
+        } else {
+          if (this.fourthTopping == "none"){
+            this.totalPayment = 12;
+          }else {
+            this.totalPayment = 14;
+          }
+        }
+      } else {
+        if (this.thirdTopping != "none" && this.fourthTopping !="none"){
+          this.totalPayment = 16;
+        } else if (this.thirdTopping !="none" && this.fourthTopping == "none"){
+          this.totalPayment = 14;
+        } else if (this.thirdTopping == "none" && this.fourthTopping !="none"){
+          this.totalPayment = 14;
+        } else {
+          this.totalPayment = 12;
+        }
+      }
+    }
+  } else if (this.size == "large"){
+    if (this.firstTopping=="pepperoni" || this.firstTopping=="cheese" || this.firstTopping=="artichoke" || this.firstTopping=="anchovy"){
+      if (this.secondTopping == "none"){
+        if (this.thirdTopping == "none"){
+          if (this.fourthTopping == "none"){
+            this.totalPayment = 12;
+          } else {
+            this.totalPayment = 14;
+          }
+        } else {
+          if (this.fourthTopping == "none"){
+            this.totalPayment = 14;
+          } else {
+            this.totalPayment = 16;
+          }
+        }
+      } else {
+        if (this.thirdTopping != "none" && this.fourthTopping !="none"){
+          this.totalPayment = 18;
+        } else if (this.thirdTopping !="none" && this.fourthTopping == "none"){
+          this.totalPayment = 16;
+        } else if (this.thirdTopping == "none" && this.fourthTopping !="none"){
+          this.totalPayment = 16;
+        } else {
+          this.totalPayment = 14;
+        }
+      }
+    }
+  }
+};
 
-let pizzaOrders = new PizzaOrders();
+
 
 function displayOrderDetails(pizzaOrdersToDisplay) {
   let pizzasList = $("ul#pizzas");
@@ -48,28 +102,13 @@ function displayOrderDetails(pizzaOrdersToDisplay) {
   pizzasList.html(htmlForPizzaInfo);
 }
 
-function showPizza(pizzaId) {
-  const pizza = pizzaOrders.findPizza(pizzaId);
-  $("#show-result").show();
-  $(".newName").html(pizza.customerName);
-  $(".firstTopping").html(pizza.firstTopping);
-  $(".secondTopping").html(pizza.secondTopping);
-  $(".thirdTopping").html(pizza.thirdTopping);
-  $(".fourthTopping").html(pizza.fourthTopping);
-  $(".size").html(pizza.size);
-  $(".totalPayment").html(pizza.totalPayment)
-}
-
-function attachPizzaListeners() {
-  $("ul#pizzas").on("click", "li", function() {
-    showPizza(this.id);
-  });
-}
 
 $(document).ready(function() {
-  attachPizzaListeners();
+
   $("form#new-pizza").submit(function(event) {
     event.preventDefault();
+    let pizzaOrders = new PizzaOrders();
+
     const inputtedCustomerName = $("input#newName").val();
     const inputtedFirstTopping = $("input:radio[name=firstTopping]:checked").val();
     const inputtedSecondTopping = $("input:radio[name=secondTopping]:checked").val();
@@ -80,9 +119,15 @@ $(document).ready(function() {
     $("input#newName").val("");
 
     let newPizza = new Pizza(inputtedCustomerName, inputtedFirstTopping, inputtedSecondTopping, inputtedThirdTopping, inputtedFourthTopping, inputtedSize);
-    // totalPayment(newPizza);
-    $("#totalPayment").html(newPizza);
-    pizzaOrders.addPizza(newPizza);
+    newPizza.paymentCalculation();
+    $("#show-result").show();
+    $(".newName").html(inputtedCustomerName);
+    $(".firstTopping").html(inputtedFirstTopping);
+    $(".secondTopping").html(inputtedSecondTopping);
+    $(".thirdTopping").html(inputtedThirdTopping);
+    $(".fourthTopping").html(inputtedFourthTopping);
+    $(".size").html(inputtedSize);
+    $(".totalPayment").html(newPizza.totalPayment);
     displayOrderDetails(pizzaOrders);
   });
 });
