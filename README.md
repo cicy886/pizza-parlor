@@ -19,237 +19,80 @@ Describer: Pizza.prototype.paymentCalculation()
 
 Test: "It should return 8 when pizza size is medium."
 code:
-if (this.size == "medium"){
-  this.totalPayment=8;
-};
-Pizza.prototype.paymentCalculation(medium);
+const inputtedSize = $("input:radio[name=size]:checked").val();
+Pizza.prototype.paymentCalculation(inputtedSize);
 Expected Output: 8
 
 Test: "It should return 10 when pizza has one topping and medium size."
 code:
-if (this.size == "medium"){
-  if (this.firstTopping =="pepperoni" || this.firstTopping == "cheese" || this.firstTopping == "artichoke" || this.firstTopping == "anchovy"){
-    if (this.secondTopping == "none") {
-      if (this.thirdTopping == "none") {
-        if (this.fourthTopping == "none) {
-          this.totalPayment = 10;
-        }
-      }
-    }
-  }
-};
-Pizza.prototype.paymentCalculation(medium,oneTopping);
+const inputtedSize = $("input:radio[name=size]:checked").val();
+const inputtedFirstTopping = $("input:radio[name=firstTopping]:checked").val();
+Pizza.prototype.paymentCalculation(inputtedSize,inputtedFirstTopping);
 Expected Output: 10
 
 Test: "It should return 12 when pizza has two toppings and medium size."
 code:
-if (this.size == "medium"){
-  if (this.firstTopping =="pepperoni" || this.firstTopping == "cheese" || this.firstTopping == "artichoke" || this.firstTopping == "anchovy"){
-    if (this.secondTopping == "none") {
-      if (this.thirdTopping == "none") {
-        if (this.fourthTopping == "none") {
-          this.totalPayment = 10;
-        } else {
-          this.totalPayment = 12;
-        }
-      } else {
-        if (this.fourthTopping == "none"){
-          this.totalPayment = 12;
-        }
-      }
-    }
-  } else {
-      if (this.thirdTopping == "none" && this.fourthTopping =="none"){
-        this.totalPayment = 12;
-      }
-    }
-};
-
-Pizza.prototype.paymentCalculation(medium,twoToppings);
+const inputtedSize = $("input:radio[name=size]:checked").val();
+const inputtedFirstTopping = $("input:radio[name=firstTopping]:checked").val();
+const inputtedSecondTopping = $("input:radio[name=secondTopping]:checked").val();
+Pizza.prototype.paymentCalculation(inputtedSize,inputtedFirstTopping,inputtedSecondTopping);
 Expected Output: 12
 
 Test: "It should return 14 when pizza has three toppings and medium size."
 code:
-if (this.size == "medium"){
-  if (this.firstTopping =="pepperoni" || this.firstTopping == "cheese" || this.firstTopping == "artichoke" || this.firstTopping == "anchovy"){
-    if (this.secondTopping == "none") {
-      if (this.thirdTopping == "none") {
-        if (this.fourthTopping == "none") {
-          this.totalPayment = 10;
-        } else {
-          this.totalPayment = 12;
-        }
-      } else {
-        if (this.fourthTopping == "none"){
-          this.totalPayment = 12;
-        } else {
-            this.totalPayment = 14;
-          }
-      }
-    }
-  } else {
-      if (this.thirdTopping !="none" && this.fourthTopping == "none"){
-        this.totalPayment = 14;
-      } else if (this.thirdTopping == "none" && this.fourthTopping !="none"){
-        this.totalPayment = 14;
-      } else {
-        this.totalPayment = 12;
-      }
-    }
-};
-
-Pizza.prototype.paymentCalculation(medium,threeToppings);
+const inputtedSize = $("input:radio[name=size]:checked").val();
+const inputtedFirstTopping = $("input:radio[name=firstTopping]:checked").val();
+const inputtedSecondTopping = $("input:radio[name=secondTopping]:checked").val();
+const inputtedThirdTopping = $("input:radio[name=thirdTopping]:checked").val();
+Pizza.prototype.paymentCalculation(inputtedSize,inputtedFirstTopping,inputtedSecondTopping,inputtedThirdTopping);
 Expected Output: 14
 
 Test: "It should return 16 when pizza has four toppings and medium size."
 code:
-  if (this.size == "medium"){
-    if (this.firstTopping=="pepperoni" || this.firstTopping=="cheese" || this.firstTopping=="artichoke" || this.firstTopping=="anchovy"){
-      if (this.secondTopping == "none"){
-        if (this.thirdTopping == "none"){
-          if (this.fourthTopping == "none"){
-            this.totalPayment = 10;
-          } else {
-            this.totalPayment = 12;
-          }
-        } else {
-          if (this.fourthTopping == "none"){
-            this.totalPayment = 12;
-          }else {
-            this.totalPayment = 14;
-          }
-        }
-      } else {
-        if (this.thirdTopping != "none" && this.fourthTopping !="none"){
-          this.totalPayment = 16;
-        } else if (this.thirdTopping !="none" && this.fourthTopping == "none"){
-          this.totalPayment = 14;
-        } else if (this.thirdTopping == "none" && this.fourthTopping !="none"){
-          this.totalPayment = 14;
-        } else {
-          this.totalPayment = 12;
-        }
-      }
-    }
-
-Pizza.prototype.paymentCalculation(medium,fourToppings);
+const inputtedSize = $("input:radio[name=size]:checked").val();
+const inputtedFirstTopping = $("input:radio[name=firstTopping]:checked").val();
+const inputtedSecondTopping = $("input:radio[name=secondTopping]:checked").val();
+const inputtedThirdTopping = $("input:radio[name=thirdTopping]:checked").val();
+const inputtedFourthTopping = $("input:radio[name=fourthTopping]:checked").val();
+Pizza.prototype.paymentCalculation(inputtedSize,inputtedFirstTopping,inputtedSecondTopping,inputtedThirdTopping,inputtedFourthTopping);
 Expected Output: 16
 
 Test: "It should return 10 when pizza size is large."
 code:
-if (this.size == "large"){
-  this.totalPayment=8;
-};
-Pizza.prototype.paymentCalculation(large);
+const inputtedSize = $("input:radio[name=size]:checked").val();
+Pizza.prototype.paymentCalculation(inputtedSize);
 Expected Output: 10
 
 Test: "It should return 12 when pizza has one topping and large size."
 code:
-if (this.size == "large"){
-  if (this.firstTopping =="pepperoni" || this.firstTopping == "cheese" || this.firstTopping == "artichoke" || this.firstTopping == "anchovy"){
-    if (this.secondTopping == "none") {
-      if (this.thirdTopping == "none") {
-        if (this.fourthTopping == "none) {
-          this.totalPayment = 12;
-        }
-      }
-    }
-  }
-};
-Pizza.prototype.paymentCalculation(large,oneTopping);
+const inputtedSize = $("input:radio[name=size]:checked").val();
+const inputtedFirstTopping = $("input:radio[name=firstTopping]:checked").val();
+Pizza.prototype.paymentCalculation(inputtedSize,inputtedFirstTopping);
 Expected Output: 12
 
 Test: "It should return 14 when pizza has two toppings and large size."
 code:
-if (this.size == "large"){
-  if (this.firstTopping =="pepperoni" || this.firstTopping == "cheese" || this.firstTopping == "artichoke" || this.firstTopping == "anchovy"){
-    if (this.secondTopping == "none") {
-      if (this.thirdTopping == "none") {
-        if (this.fourthTopping == "none") {
-          this.totalPayment = 12;
-        } else {
-          this.totalPayment = 14;
-        }
-      } else {
-        if (this.fourthTopping == "none"){
-          this.totalPayment = 14;
-        }
-      }
-    }
-  } else {
-      if (this.thirdTopping == "none" && this.fourthTopping =="none"){
-        this.totalPayment = 14;
-      }
-    }
-};
-
-Pizza.prototype.paymentCalculation(large,twoToppings);
+const inputtedSize = $("input:radio[name=size]:checked").val();
+const inputtedFirstTopping = $("input:radio[name=firstTopping]:checked").val();
+const inputtedSecondTopping = $("input:radio[name=secondTopping]:checked").val();
+Pizza.prototype.paymentCalculation(inputtedSize,inputtedFirstTopping,inputtedSecondTopping);
 Expected Output: 14
 
 Test: "It should return 16 when pizza has three toppings and large size."
 code:
-if (this.size == "large"){
-  if (this.firstTopping =="pepperoni" || this.firstTopping == "cheese" || this.firstTopping == "artichoke" || this.firstTopping == "anchovy"){
-    if (this.secondTopping == "none") {
-      if (this.thirdTopping == "none") {
-        if (this.fourthTopping == "none") {
-          this.totalPayment = 12;
-        } else {
-          this.totalPayment = 14;
-        }
-      } else {
-        if (this.fourthTopping == "none"){
-          this.totalPayment = 14;
-        } else {
-            this.totalPayment = 16;
-          }
-      }
-    }
-  } else {
-      if (this.thirdTopping !="none" && this.fourthTopping == "none"){
-        this.totalPayment = 16;
-      } else if (this.thirdTopping == "none" && this.fourthTopping !="none"){
-        this.totalPayment = 16;
-      } else {
-        this.totalPayment = 14;
-      }
-    }
-};
-
-Pizza.prototype.paymentCalculation(large,threeToppings);
+const inputtedSize = $("input:radio[name=size]:checked").val();
+const inputtedFirstTopping = $("input:radio[name=firstTopping]:checked").val();
+const inputtedSecondTopping = $("input:radio[name=secondTopping]:checked").val();
+const inputtedThirdTopping = $("input:radio[name=thirdTopping]:checked").val();
+Pizza.prototype.paymentCalculation(inputtedSize,inputtedFirstTopping,inputtedSecondTopping,inputtedThirdTopping);
 Expected Output: 16
 
 Test: "It should return 18 when pizza has four toppings and large size."
 code:
-if (this.size == "large"){
-    if (this.firstTopping=="pepperoni" || this.firstTopping=="cheese" || this.firstTopping=="artichoke" || this.firstTopping=="anchovy"){
-      if (this.secondTopping == "none"){
-        if (this.thirdTopping == "none"){
-          if (this.fourthTopping == "none"){
-            this.totalPayment = 12;
-          } else {
-            this.totalPayment = 14;
-          }
-        } else {
-          if (this.fourthTopping == "none"){
-            this.totalPayment = 14;
-          } else {
-            this.totalPayment = 16;
-          }
-        }
-      } else {
-        if (this.thirdTopping != "none" && this.fourthTopping !="none"){
-          this.totalPayment = 18;
-        } else if (this.thirdTopping !="none" && this.fourthTopping == "none"){
-          this.totalPayment = 16;
-        } else if (this.thirdTopping == "none" && this.fourthTopping !="none"){
-          this.totalPayment = 16;
-        } else {
-          this.totalPayment = 14;
-        }
-      }
-    }
-  }
-
-Pizza.prototype.paymentCalculation(large,fourToppings);
+const inputtedSize = $("input:radio[name=size]:checked").val();
+const inputtedFirstTopping = $("input:radio[name=firstTopping]:checked").val();
+const inputtedSecondTopping = $("input:radio[name=secondTopping]:checked").val();
+const inputtedThirdTopping = $("input:radio[name=thirdTopping]:checked").val();
+const inputtedFourthTopping = $("input:radio[name=fourthTopping]:checked").val();
+Pizza.prototype.paymentCalculation(inputtedSize,inputtedFirstTopping,inputtedSecondTopping,inputtedThirdTopping,inputtedFourthTopping);
 Expected Output: 18
