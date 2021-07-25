@@ -20,14 +20,14 @@ Describer: Pizza.prototype.paymentCalculation()
 Test: "It should return 8 when pizza size is medium."
 code:
 const inputtedSize = $("input:radio[name=size]:checked").val();
-Pizza.prototype.paymentCalculation(inputtedSize);
+Pizza.prototype.paymentCalculation(medium);
 Expected Output: 8
 
 Test: "It should return 10 when pizza has one topping and medium size."
 code:
 const inputtedSize = $("input:radio[name=size]:checked").val();
 const inputtedFirstTopping = $("input:radio[name=firstTopping]:checked").val();
-Pizza.prototype.paymentCalculation(inputtedSize,inputtedFirstTopping);
+Pizza.prototype.paymentCalculation(medium,pepperoni);
 Expected Output: 10
 
 Test: "It should return 12 when pizza has two toppings and medium size."
@@ -35,7 +35,7 @@ code:
 const inputtedSize = $("input:radio[name=size]:checked").val();
 const inputtedFirstTopping = $("input:radio[name=firstTopping]:checked").val();
 const inputtedSecondTopping = $("input:radio[name=secondTopping]:checked").val();
-Pizza.prototype.paymentCalculation(inputtedSize,inputtedFirstTopping,inputtedSecondTopping);
+Pizza.prototype.paymentCalculation(medium, pepperoni, pepperoni);
 Expected Output: 12
 
 Test: "It should return 14 when pizza has three toppings and medium size."
@@ -44,7 +44,7 @@ const inputtedSize = $("input:radio[name=size]:checked").val();
 const inputtedFirstTopping = $("input:radio[name=firstTopping]:checked").val();
 const inputtedSecondTopping = $("input:radio[name=secondTopping]:checked").val();
 const inputtedThirdTopping = $("input:radio[name=thirdTopping]:checked").val();
-Pizza.prototype.paymentCalculation(inputtedSize,inputtedFirstTopping,inputtedSecondTopping,inputtedThirdTopping);
+Pizza.prototype.paymentCalculation(mediu, pepperoni,pepperoni,pepperoni);
 Expected Output: 14
 
 Test: "It should return 16 when pizza has four toppings and medium size."
@@ -54,11 +54,48 @@ const inputtedFirstTopping = $("input:radio[name=firstTopping]:checked").val();
 const inputtedSecondTopping = $("input:radio[name=secondTopping]:checked").val();
 const inputtedThirdTopping = $("input:radio[name=thirdTopping]:checked").val();
 const inputtedFourthTopping = $("input:radio[name=fourthTopping]:checked").val();
-Pizza.prototype.paymentCalculation(inputtedSize,inputtedFirstTopping,inputtedSecondTopping,inputtedThirdTopping,inputtedFourthTopping);
+Pizza.prototype.paymentCalculation(medium, pepperoni, pepperoni, pepperoni, peppperoni);
 Expected Output: 16
 
 Test: "It should return 10 when pizza size is large."
 code:
+const inputtedSize = $("input:radio[name=size]:checked").val();
+Pizza.prototype.paymentCalculation(large);
+Expected Output: 10
+
+Test: "It should return 12 when pizza has one topping and large size."
+code:
+const inputtedSize = $("input:radio[name=size]:checked").val();
+const inputtedFirstTopping = $("input:radio[name=firstTopping]:checked").val();
+Pizza.prototype.paymentCalculation(large, pepperon);
+Expected Output: 12
+
+Test: "It should return 14 when pizza has two toppings and large size."
+code:
+const inputtedSize = $("input:radio[name=size]:checked").val();
+const inputtedFirstTopping = $("input:radio[name=firstTopping]:checked").val();
+const inputtedSecondTopping = $("input:radio[name=secondTopping]:checked").val();
+Pizza.prototype.paymentCalculation(large, pepperoni,pepperoni);
+Expected Output: 14
+
+Test: "It should return 16 when pizza has three toppings and large size."
+code:
+const inputtedSize = $("input:radio[name=size]:checked").val();
+const inputtedFirstTopping = $("input:radio[name=firstTopping]:checked").val();
+const inputtedSecondTopping = $("input:radio[name=secondTopping]:checked").val();
+const inputtedThirdTopping = $("input:radio[name=thirdTopping]:checked").val();
+Pizza.prototype.paymentCalculation(large, pepperoni,pepperoni,pepperoni);
+Expected Output: 16
+
+Test: "It should return 18 when pizza has four toppings and large size."
+code:
+const inputtedSize = $("input:radio[name=size]:checked").val();
+const inputtedFirstTopping = $("input:radio[name=firstTopping]:checked").val();
+const inputtedSecondTopping = $("input:radio[name=secondTopping]:checked").val();
+const inputtedThirdTopping = $("input:radio[name=thirdTopping]:checked").val();
+const inputtedFourthTopping = $("input:radio[name=fourthTopping]:checked").val();
+Pizza.prototype.paymentCalculation(large, pepperoni,pepperoni,pepperoni,pepperoni);
+Expected Output: 18
 const inputtedSize = $("input:radio[name=size]:checked").val();
 Pizza.prototype.paymentCalculation(inputtedSize);
 Expected Output: 10
