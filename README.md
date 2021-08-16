@@ -6,7 +6,7 @@ This project includes one HTML file, one custom CSS file, one custom JS file, bo
 ## Program Steup instruction
 On GitHub, navigate to the main page of the repository. Above the list of files, click **Code**. Click **Download ZIP** and download the files onto your machine. Open the HTML file or/and the CSS file with VS code or other coding applications you preferred.
 ## Known Bugs
-The total price is not displaying correctly.
+No known bugs at this time
 ## Github page website
 https://cicy886.github.io/pizza-parlor/
 ## Lisence
